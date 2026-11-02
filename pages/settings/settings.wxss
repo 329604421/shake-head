@@ -1,0 +1,5 @@
+.root {
+  position: relative;
+  width: 480px;
+  height: 352px;
+}

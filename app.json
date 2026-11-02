@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/brick/brick",
+    "pages/eggcatch/eggcatch",
+    "pages/plane/plane",
+    "pages/marble/marble",
+    "pages/missile/missile",
+    "pages/game/game",
+    "pages/calibrate/calibrate",
+    "pages/settings/settings",
+    "pages/records/records",
+    "pages/result/result"
+  ],
+  "window": {
+    "navigationBarTitleText": "摇头晃脑",
+    "viewport": { "width": "device-width" }
+  }
+}
