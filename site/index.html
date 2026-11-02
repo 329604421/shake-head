@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#071009">
   <link rel="icon" href="data:,">
-  <meta name="description" content="《摇头晃脑》是为 Rokid Glasses 打造的五款头控体感小游戏。滑动触控、转头选择、单击确认，在单绿透明显示中重新认识经典玩法。">
+  <meta name="description" content="《摇头晃脑》是为 Rokid Glasses 打造的五款头控体感小游戏。滑动触控、转头选择、单击确认，在单绿透明显示中重新认识经典玩法。工程源码、PRD 与回归套件已在 GitHub 以 MIT 许可开源。">
   <title>摇头晃脑｜Rokid 头控体感游戏合集</title>
   <style>
     :root {
@@ -200,6 +200,34 @@
     .gallery-caption { position: absolute; inset: auto 0 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 30px 17px 14px; background: linear-gradient(transparent, rgba(0, 0, 0, .9)); font-size: 12px; }
     .gallery-caption span:last-child { color: var(--green); font: 600 10px/1 Consolas, monospace; }
     .gallery-item.store img { object-fit: cover; object-position: top; }
+    .os-section { border-block: 1px solid var(--line); background: linear-gradient(180deg, rgba(64, 255, 94, .022), transparent); }
+    .os-grid { display: grid; grid-template-columns: 1.32fr 1fr; gap: 16px; }
+    .os-card { display: flex; flex-direction: column; padding: 32px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, rgba(16, 27, 19, .9), rgba(8, 13, 10, .94)); transition: transform .25s, border-color .25s, box-shadow .25s; }
+    .os-card:hover { transform: translateY(-4px); border-color: var(--line-strong); box-shadow: 0 18px 44px rgba(0, 0, 0, .35); }
+    .os-card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .os-mark { flex: none; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--line-strong); border-radius: 12px; color: var(--green); background: rgba(64, 255, 94, .05); }
+    .os-mark svg { width: 22px; height: 22px; }
+    .os-path { color: var(--dim); font-size: 11px; letter-spacing: .04em; word-break: break-all; }
+    .os-card h3 { margin: 0 0 12px; font-size: 25px; letter-spacing: -.03em; }
+    .os-card h3 small { display: block; margin-top: 5px; color: var(--green-soft); font: 600 10px/1.4 Consolas, monospace; letter-spacing: .14em; }
+    .os-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .os-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 22px; }
+    .os-tags span { padding: 5px 9px; border: 1px solid var(--line); border-radius: 7px; color: var(--green-soft); font: 600 10px/1.5 Consolas, monospace; letter-spacing: .07em; }
+    .os-go { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 22px; color: var(--green); font-size: 13px; font-weight: 700; }
+    .os-go b { transition: transform .2s; }
+    .os-card:hover .os-go b { transform: translate(2px, -2px); }
+    .os-ways { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+    .os-way { display: flex; flex-direction: column; padding: 26px; border: 1px solid var(--line); border-radius: 18px; background: rgba(10, 16, 12, .72); }
+    .os-way-no { display: block; margin-bottom: 14px; color: rgba(64, 255, 94, .42); font: 700 11px/1 Consolas, monospace; }
+    .os-way h3 { margin: 0 0 8px; font-size: 16px; }
+    .os-way p { margin: 0 0 16px; color: var(--muted); font-size: 13px; }
+    .os-way p code { color: var(--green-soft); font: 500 12px/1.6 Consolas, monospace; }
+    .os-way > a { margin-top: auto; color: var(--green); font-size: 12px; word-break: break-all; }
+    .os-way > a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .os-clone { display: flex; align-items: center; gap: 8px; margin-top: auto; padding: 8px 8px 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: rgba(4, 10, 6, .78); }
+    .os-clone code { flex: 1; overflow-x: auto; white-space: nowrap; color: var(--green-soft); font: 500 11px/1.8 Consolas, monospace; }
+    .os-clone button { flex: none; padding: 5px 10px; border: 1px solid var(--line-strong); border-radius: 7px; color: var(--green); background: rgba(64, 255, 94, .06); font-size: 11px; cursor: pointer; transition: background .2s; }
+    .os-clone button:hover { background: rgba(64, 255, 94, .16); }
     .closing { padding: 70px 0 110px; }
     .closing-card { position: relative; overflow: hidden; padding: 74px 40px; border: 1px solid var(--line-strong); border-radius: 30px; background: radial-gradient(circle at 50% 120%, rgba(64, 255, 94, .17), transparent 55%), var(--surface); text-align: center; }
     .closing-card::before, .closing-card::after { content: ""; position: absolute; width: 240px; height: 240px; border: 1px solid rgba(64, 255, 94, .1); border-radius: 50%; top: 50%; transform: translateY(-50%); }
@@ -211,6 +239,9 @@
     .footer-inner { min-height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 24px; color: var(--dim); font-size: 11px; }
     .footer-brand { display: flex; align-items: center; gap: 10px; color: var(--muted); font-weight: 700; }
     .footer-brand img { width: 28px; height: 28px; border-radius: 8px; }
+    .footer-meta { display: flex; align-items: center; gap: 18px; }
+    .footer-link { color: var(--muted); font-weight: 700; transition: color .2s; }
+    .footer-link:hover { color: var(--green); }
     dialog { width: min(92vw, 1060px); max-height: 92vh; padding: 12px; border: 1px solid var(--line-strong); border-radius: 20px; color: var(--text); background: #071009; box-shadow: var(--shadow); }
     dialog::backdrop { background: rgba(0, 0, 0, .86); backdrop-filter: blur(8px); }
     .lightbox-img { max-height: 78vh; width: 100%; object-fit: contain; border-radius: 12px; background: #000; }
@@ -226,6 +257,9 @@
       .feature-grid { grid-template-columns: repeat(2, 1fr); }
       .interaction-grid { gap: 40px; }
       .motion-preview { grid-template-columns: 1.2fr .8fr; }
+      .os-grid { grid-template-columns: 1fr; }
+      .os-ways { grid-template-columns: repeat(2, 1fr); }
+      .os-ways > :last-child { grid-column: 1 / -1; }
     }
     @media (max-width: 820px) {
       .container { width: min(calc(100% - 36px), var(--max)); }
@@ -252,6 +286,8 @@
       .motion-preview video { min-height: 0; aspect-ratio: 16 / 10; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery-item.wide { grid-column: span 2; }
+      .os-ways { grid-template-columns: 1fr; }
+      .os-ways > :last-child { grid-column: auto; }
     }
     @media (max-width: 560px) {
       .container { width: min(calc(100% - 28px), var(--max)); }
@@ -276,7 +312,13 @@
       .gallery-item.wide img { aspect-ratio: 1.38; }
       .motion-copy { padding: 26px; }
       .closing-card { padding: 56px 22px; }
+      .os-card { padding: 24px; }
+      .os-way { padding: 22px; }
+      .os-card h3 { font-size: 22px; }
+      .os-clone { align-items: center; }
+      .os-clone code { white-space: normal; overflow-wrap: break-word; word-break: normal; line-height: 1.7; }
       .footer-inner { padding: 24px 0; flex-direction: column; align-items: flex-start; }
+      .footer-meta { gap: 14px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -298,6 +340,7 @@
         <a href="#games">五款游戏</a>
         <a href="#interaction">交互方式</a>
         <a href="#gallery">实机素材</a>
+        <a href="#open-source">开源</a>
         <a class="nav-cta" href="#games">开始探索 ↗</a>
       </div>
     </div>
@@ -477,6 +520,57 @@
       </div>
     </section>
 
+    <section class="section os-section" id="open-source">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><span class="kicker">OPEN SOURCE / MIT</span><h2>工程、文档与测试，<br><span class="green">全部开源</span>。</h2></div>
+          <p>整个项目已在 GitHub 公开：AIUI 运行时工程、五款游戏的页面四件套、头控流水线参数、打包与离线回归脚本，以及六册 PRD。统一 MIT 许可，可自由阅读、修改与商用。</p>
+        </div>
+        <div class="os-grid">
+          <a class="os-card reveal" href="https://github.com/329604421/shake-head" target="_blank" rel="noopener noreferrer">
+            <div class="os-card-head">
+              <span class="os-mark"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.58.1.79-.25.79-.55v-1.94c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.66.8.55A11.5 11.5 0 0 0 12 .5Z"/></svg></span>
+              <span class="os-path">github.com/329604421/shake-head</span>
+            </div>
+            <h3>shake-head<small>SOURCE · DOCS · TESTS</small></h3>
+            <p>Rokid Glasses 头控体感游戏合集的完整工程：480 × 352 单绿画布、IMU 八级头控流水线、五款游戏共用一套页面状态机，附打包脚本、离线回归套件与逐像素设计说明。</p>
+            <div class="os-tags"><span>MIT LICENSE</span><span>ZERO DEPENDENCY</span><span>15 HARNESS</span><span>6 PRD</span></div>
+            <span class="os-go">查看仓库 <b>↗</b></span>
+          </a>
+          <a class="os-card reveal" href="https://github.com/329604421" target="_blank" rel="noopener noreferrer">
+            <div class="os-card-head">
+              <span class="os-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-5.7 7-5.7s7 2.1 7 5.7"/></svg></span>
+              <span class="os-path">github.com/329604421</span>
+            </div>
+            <h3>作者主页<small>MORE PROJECTS</small></h3>
+            <p>仓库作者在 GitHub 的主页，收录《摇头晃脑》之外的其它产品与实验：好运夹、Agent-ToDo，以及正在推进的技术方向。</p>
+            <div class="os-tags"><span>PROFILE</span><span>MORE PROJECTS</span></div>
+            <span class="os-go">访问主页 <b>↗</b></span>
+          </a>
+        </div>
+        <div class="os-ways">
+          <div class="os-way reveal">
+            <span class="os-way-no">01 / READ</span>
+            <h3>在线浏览源码</h3>
+            <p>仓库首页 README 讲清了目录结构、头控流水线、视觉合规红线与已知限制，无需安装任何东西。</p>
+            <a href="https://github.com/329604421/shake-head#readme" target="_blank" rel="noopener noreferrer">阅读项目说明 ↗</a>
+          </div>
+          <div class="os-way reveal">
+            <span class="os-way-no">02 / CLONE</span>
+            <h3>克隆到本地</h3>
+            <p>零第三方依赖，克隆后直接 <code>node tools/verify.mjs</code> 就能离线跑完整回归。</p>
+            <div class="os-clone"><code>git clone https://github.com/329604421/<wbr>shake-head.git</code><button type="button" id="cloneCopy" data-copy="git clone https://github.com/329604421/shake-head.git" aria-label="复制克隆命令">复制</button></div>
+          </div>
+          <div class="os-way reveal">
+            <span class="os-way-no">03 / DOCS</span>
+            <h3>阅读设计文档</h3>
+            <p>需求总章与六册 PRD、设计说明都在 <code>docs/prd</code>，坐标与亮度档和代码三处同步。</p>
+            <a href="https://github.com/329604421/shake-head/tree/main/docs/prd" target="_blank" rel="noopener noreferrer">打开 docs/prd ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="closing">
       <div class="container">
         <div class="closing-card reveal">
@@ -493,7 +587,10 @@
     <div class="container footer-inner">
       <div class="footer-brand"><img src="assets/logo.png" alt=""><span>摇头晃脑 · HEAD MOTION ARCADE</span></div>
       <span>为 Rokid Glasses 设计 · 画面来自项目实机与预览素材</span>
-      <span class="mono">© <span id="year">2026</span> / AIUI</span>
+      <span class="footer-meta">
+        <a class="footer-link" href="https://github.com/329604421/shake-head" target="_blank" rel="noopener noreferrer">GitHub 开源仓库 ↗</a>
+        <span class="mono">© <span id="year">2026</span> / MIT</span>
+      </span>
     </div>
   </footer>
 
@@ -576,6 +673,36 @@
         }, { threshold: 0.08, rootMargin: '0px 0px -35px' });
         document.querySelectorAll('.reveal').forEach(function (element) { observer.observe(element); });
       }
+      var cloneCopy = document.getElementById('cloneCopy');
+      if (cloneCopy) {
+        cloneCopy.addEventListener('click', function () {
+          var command = cloneCopy.getAttribute('data-copy');
+          function done(ok) {
+            cloneCopy.textContent = ok ? '已复制' : '复制失败';
+            window.setTimeout(function () { cloneCopy.textContent = '复制'; }, 1800);
+          }
+          function legacyCopy() {
+            var area = document.createElement('textarea');
+            area.value = command;
+            area.setAttribute('readonly', '');
+            area.style.position = 'fixed';
+            area.style.top = '-1000px';
+            area.style.opacity = '0';
+            document.body.appendChild(area);
+            area.select();
+            var ok = false;
+            try { ok = document.execCommand('copy'); } catch (error) { ok = false; }
+            document.body.removeChild(area);
+            done(ok);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(command).then(function () { done(true); }, legacyCopy);
+          } else {
+            legacyCopy();
+          }
+        });
+      }
+
       document.getElementById('year').textContent = new Date().getFullYear();
     }());
   </script>
