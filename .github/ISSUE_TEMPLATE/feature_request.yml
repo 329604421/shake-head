@@ -1,0 +1,37 @@
+name: 功能建议
+description: 提一个玩法、交互或工程上的改进想法
+title: '[feat] '
+labels: ['enhancement']
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: 属于哪一块
+      options:
+        - 新游戏
+        - 现有玩法调整
+        - 头控手感（延迟 / 漂移 / 幅度）
+        - 视觉与动效
+        - 音效
+        - 工程与测试
+        - 官网 / 文档
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 现在的问题是什么
+      description: 描述使用中的具体不便，不要直接跳到方案
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: 你的想法
+  - type: textarea
+    id: constraint
+    attributes:
+      label: 已知约束（可留空）
+      description: |
+        这个项目有几条硬约束：480×352 固定画布、单绿 6 档亮度、无定时器契约、
+        禁黑色遮罩、同屏 ≤3 个字级。方案如果触碰它们，需要额外说明。

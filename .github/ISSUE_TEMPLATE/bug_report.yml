@@ -1,0 +1,66 @@
+name: 问题反馈
+description: 报告一个 bug 或异常表现
+title: '[bug] '
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        这个项目的故障大多和**运行环境**强相关（宿主有没有定时器、音频 API 走哪条通道、
+        IMU 收敛是否完成），所以请尽量把环境信息填全，否则很难复现。
+  - type: dropdown
+    id: where
+    attributes:
+      label: 在哪跑的
+      options:
+        - Rokid Craft Web IDE 预览
+        - Rokid Glasses 真机
+        - 本地 node 回归（tests/navsim）
+        - 官网静态页（site/）
+        - 其他
+    validations:
+      required: true
+  - type: input
+    id: build
+    attributes:
+      label: 构建版本
+      description: '看 utils/layout.js 里的 BUILD 常量，或导入的 zip 文件名'
+      placeholder: 'v1.54'
+    validations:
+      required: true
+  - type: textarea
+    id: symptom
+    attributes:
+      label: 现象
+      description: 发生了什么，越具体越好（黑屏 / 无音 / 转头不识别 / 画面自己飘…）
+    validations:
+      required: true
+  - type: textarea
+    id: expect
+    attributes:
+      label: 期望
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      placeholder: |
+        1. 进入主页
+        2. 滑动进入选择态
+        3. 转头到打砖块，单击进入
+        4. …
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 取证信息
+      description: '控制台日志（尤其 engine.health() 的 fps= 与 gy=）、截图、录屏链接'
+      render: text
+  - type: checkboxes
+    id: check
+    attributes:
+      label: 确认
+      options:
+        - label: 导入的是最新构建的快照（旧快照会静默跑旧代码）
+          required: true
+        - label: 已跑过 node tools/verify.mjs 且全绿

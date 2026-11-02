@@ -1,0 +1,37 @@
+{
+  "name": "shake-head",
+  "version": "1.54.0",
+  "private": true,
+  "description": "摇头晃脑 · 为 Rokid Glasses 打造的头控体感小游戏合集（AIUI / Canvas 2D / IMU 融合）",
+  "keywords": [
+    "rokid",
+    "aiui",
+    "ar",
+    "head-tracking",
+    "imu",
+    "canvas",
+    "mini-game"
+  ],
+  "homepage": "https://shake.memorymap.cn",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/329604421/shake-head.git"
+  },
+  "bugs": {
+    "url": "https://github.com/329604421/shake-head/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "verify": "node tools/verify.mjs",
+    "test": "node tools/verify.mjs",
+    "test:build": "node tests/navsim/build.mjs",
+    "check:pages": "node tools/check-pages.js .",
+    "sfx": "python tools/gen-sfx.py",
+    "pack": "node tools/pack.mjs",
+    "pack:latest": "node tools/pack.mjs latest",
+    "site": "node tools/serve-site.mjs"
+  }
+}

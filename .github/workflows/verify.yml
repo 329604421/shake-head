@@ -1,0 +1,33 @@
+name: verify
+
+# 回归是 14 套 harness + 1 套二级页冒烟，共 1300+ 条断言。
+# 任何一条挂掉都不该进 main：这个项目的历史事故（黑屏、无音、头控漂移）
+# 全是"看起来能跑"的那种，靠肉眼验收抓不住。
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20', '22']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: 环境信息
+        run: node --version && python3 --version
+
+      - name: 页面结构自检（四件套齐全）
+        run: node tools/check-pages.js .
+
+      - name: 语法检查 + 产物化 + 全部 harness
+        run: npm test

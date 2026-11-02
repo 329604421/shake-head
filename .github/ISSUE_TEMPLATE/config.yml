@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 先跑一遍本地回归
+    url: https://github.com/329604421/shake-head/blob/main/CONTRIBUTING.md
+    about: node tools/verify.mjs 全绿再提问，能省掉一半来回
+  - name: 线上效果
+    url: https://shake.memorymap.cn
+    about: 官网有实机录屏与五款游戏截图，先确认是不是已知表现

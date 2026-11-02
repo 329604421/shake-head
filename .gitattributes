@@ -1,0 +1,13 @@
+# 行尾统一交给 git 管理：源文件本地可能是 CRLF，入库一律 LF。
+# 好处是 diff 不会被行尾噪声淹没（历史上吃过一次「上千行全变」的亏）。
+* text=auto eol=lf
+
+# 二进制资源：不做行尾转换，也不要尝试当文本合并
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.wav binary
+*.mp4 binary
+*.zip binary

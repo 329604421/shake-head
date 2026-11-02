@@ -1,0 +1,41 @@
+# 依赖
+node_modules/
+miniprogram_npm/
+
+# 构建产物 / 打包快照
+dist/
+*.zip
+
+# 测试产物：build.mjs 把 utils/*.js 复制成 wx mock 版放在这里，属于生成物
+tests/navsim/utils/
+tests/navsim/pages/
+
+# 本地环境与密钥（.env.example 例外，示例文件要入库）
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+secrets.*
+token*
+
+# 日志与临时文件
+*.log
+npm-debug.log*
+.tmp/
+
+# 编辑器与系统
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 微信开发者工具 / Rokid Craft 本地配置
+project.private.config.json
+
+# 本地预览与截图工具产物
+.playwright-cli/
+.profile-readme/
