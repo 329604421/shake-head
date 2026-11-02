@@ -19,15 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-本许可覆盖仓库内**全部内容**，无例外：
-
-- 源代码：`app.js`、`pages/`、`utils/`、`tools/`
-- 文档：`docs/`（需求说明书、六册 PRD、设计说明）
-- 测试：`tests/navsim/`
-- 素材：`assets/sfx/` 音效、`site/assets/` 与 `docs/assets/` 图片
-
-「摇头晃脑」（SHAKE HEAD）名称与应用图标仅用于标识本项目来源；
-再分发或二次开发时，建议替换为自己的名称与标识，以免与上游混淆。
