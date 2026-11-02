@@ -90,7 +90,7 @@
     .brand-icon { width: 40px; height: 40px; object-fit: cover; border-radius: 12px; background: white; }
     .brand small { display: block; color: var(--dim); font: 600 9px/1.1 Consolas, monospace; letter-spacing: .15em; }
     .nav-links { display: flex; align-items: center; gap: 32px; color: var(--muted); font-size: 14px; }
-    .nav-links a { transition: color .2s; }
+    .nav-links a { white-space: nowrap; transition: color .2s; }
     .nav-links a:hover { color: var(--green); }
     .nav-cta { padding: 10px 17px; border: 1px solid var(--line-strong); border-radius: 99px; color: var(--text) !important; }
     .nav-cta:hover { background: rgba(64, 255, 94, .08); }
@@ -228,6 +228,15 @@
     .os-clone code { flex: 1; overflow-x: auto; white-space: nowrap; color: var(--green-soft); font: 500 11px/1.8 Consolas, monospace; }
     .os-clone button { flex: none; padding: 5px 10px; border: 1px solid var(--line-strong); border-radius: 7px; color: var(--green); background: rgba(64, 255, 94, .06); font-size: 11px; cursor: pointer; transition: background .2s; }
     .os-clone button:hover { background: rgba(64, 255, 94, .16); }
+    .os-author { display: flex; align-items: center; gap: 18px; margin-top: 16px; padding: 22px 26px; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(120deg, rgba(64, 255, 94, .05), rgba(8, 13, 10, .62)); transition: border-color .25s, transform .25s; }
+    .os-author:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+    .os-author-mark { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgba(64, 255, 94, .24); border-radius: 12px; color: var(--green); background: rgba(64, 255, 94, .06); }
+    .os-author-mark svg { width: 21px; height: 21px; }
+    .os-author-body { display: grid; gap: 5px; min-width: 0; }
+    .os-author-body strong { font-size: 15px; letter-spacing: -.01em; }
+    .os-author-body span { color: var(--muted); font-size: 13px; }
+    .os-author-go { flex: none; margin-left: auto; color: var(--green); font: 700 12px/1 Consolas, monospace; letter-spacing: .06em; }
+    .os-author:hover .os-author-go { text-decoration: underline; text-underline-offset: 3px; }
     .closing { padding: 70px 0 110px; }
     .closing-card { position: relative; overflow: hidden; padding: 74px 40px; border: 1px solid var(--line-strong); border-radius: 30px; background: radial-gradient(circle at 50% 120%, rgba(64, 255, 94, .17), transparent 55%), var(--surface); text-align: center; }
     .closing-card::before, .closing-card::after { content: ""; position: absolute; width: 240px; height: 240px; border: 1px solid rgba(64, 255, 94, .1); border-radius: 50%; top: 50%; transform: translateY(-50%); }
@@ -250,6 +259,7 @@
     body.reveal-ready .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
     body.reveal-ready .reveal.visible { opacity: 1; transform: none; }
     @media (max-width: 1020px) {
+      .nav-links { gap: 22px; }
       .hero { grid-template-columns: 1fr 1fr; gap: 38px; }
       .hero h1 { font-size: 70px; }
       .float-one { right: -8px; }
@@ -317,6 +327,9 @@
       .os-card h3 { font-size: 22px; }
       .os-clone { align-items: center; }
       .os-clone code { white-space: normal; overflow-wrap: break-word; word-break: normal; line-height: 1.7; }
+      .os-author { flex-wrap: wrap; padding: 20px; gap: 14px; }
+      .os-author-body { flex: 1 1 170px; }
+      .os-author-go { flex-basis: 100%; margin-left: 0; }
       .footer-inner { padding: 24px 0; flex-direction: column; align-items: flex-start; }
       .footer-meta { gap: 14px; }
     }
@@ -341,6 +354,7 @@
         <a href="#interaction">交互方式</a>
         <a href="#gallery">实机素材</a>
         <a href="#open-source">开源</a>
+        <a href="https://memorymap.cn/" target="_blank" rel="noopener noreferrer" aria-label="作者个人官网 memorymap.cn（在新标签页打开）">作者官网 ↗</a>
         <a class="nav-cta" href="#games">开始探索 ↗</a>
       </div>
     </div>
@@ -568,6 +582,11 @@
             <a href="https://github.com/329604421/shake-head/tree/main/docs/prd" target="_blank" rel="noopener noreferrer">打开 docs/prd ↗</a>
           </div>
         </div>
+        <a class="os-author reveal" href="https://memorymap.cn/" target="_blank" rel="noopener noreferrer">
+          <span class="os-author-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M3.4 12h17.2M12 3.4c2.4 2.3 3.6 5.2 3.6 8.6s-1.2 6.3-3.6 8.6c-2.4-2.3-3.6-5.2-3.6-8.6S9.6 5.7 12 3.4Z"/></svg></span>
+          <span class="os-author-body"><strong>作者 · 杜春生</strong><span>《摇头晃脑》之外的产品、实验与技术记录，都在个人官网 memorymap.cn。</span></span>
+          <span class="os-author-go">前往官网 ↗</span>
+        </a>
       </div>
     </section>
 
@@ -588,6 +607,7 @@
       <div class="footer-brand"><img src="assets/logo.png" alt=""><span>摇头晃脑 · HEAD MOTION ARCADE</span></div>
       <span>为 Rokid Glasses 设计 · 画面来自项目实机与预览素材</span>
       <span class="footer-meta">
+        <a class="footer-link" href="https://memorymap.cn/" target="_blank" rel="noopener noreferrer">作者个人官网 ↗</a>
         <a class="footer-link" href="https://github.com/329604421/shake-head" target="_blank" rel="noopener noreferrer">GitHub 开源仓库 ↗</a>
         <span class="mono">© <span id="year">2026</span> / MIT</span>
       </span>
